@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryButtons = document.querySelectorAll('.category-option');
     const backBtn = document.getElementById('btn-back');
 
-    
     let chosenDifficulty = '';
 
     const setTheme = (theme) => {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-difficultyButtons.forEach(btn => {
+    difficultyButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             chosenDifficulty = btn.getAttribute('data-difficulty');
             stepDifficulty.classList.add('d-none');
