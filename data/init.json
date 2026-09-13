@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "question": "Rating of a photo?",
+        "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTJfItxnHZJu15owZSBI6ygDNy98RMP1KN7p77nmPrTOfYmdljr",
+        "options": [
+            "10⭐",
+            "100⭐",
+            "1000⭐",
+            "♾"
+        ],
+        "correctAnswer": 4,
+        "duration": 15
+    }
+]
