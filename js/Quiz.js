@@ -1,7 +1,34 @@
 // theme toggle functionality
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     window.scrollTo(0, 0);
 
+    // get category and difficulty
+    const cat = localStorage.getItem('category') || 'init';
+    const diff = localStorage.getItem('difficulty') || 'easy';
+
+    // retrieve question data from init.json
+    let data = null;
+    async function retrieveData() {
+        const response = await fetch('../data/init.json');
+        const Data = await response.json();
+        return Data.filter(item => item.category === cat && item.difficulty === diff);
+    };
+    data = await retrieveData();
+    // console.log(data);
+    
+    // get Quiz card element DOM
+    const question = document.querySelector('.Question');
+    const options = document.querySelectorAll('.option');
+    const sidebarImg = document.querySelector('.Img img');
+    
+    // set card element content based on retrieved data
+    question.textContent = data[0].question;
+    options.forEach((option, index) => {
+        option.textContent = data[0].options[index];
+    });
+    sidebarImg.src = data[0].image;
+
+    // theme toggle functionality
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
 
@@ -22,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTheme = document.documentElement.getAttribute('data-bs-theme');
         setTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
-
-
+    // ـــــــــــــــــــــــــــــــــــــــــــــــــــــ
 });
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
@@ -38,7 +64,6 @@ toggleBtn.addEventListener('click', () => {
 
 // back to setup page functionality
 document.querySelector('#backSetup').addEventListener('click', _ => {
-    
     window.location.href = './index.html';
 });
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
