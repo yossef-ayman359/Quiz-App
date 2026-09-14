@@ -27,6 +27,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
+const difficulty = localStorage.getItem('quiz_difficulty') || 'easy';
+    const category = localStorage.getItem('quiz_category') || 'sports';
+
+    // Call your colleague's function/API using the saved selections
+    loadQuizData(difficulty, category);
+
+
+// Function to fetch questions based on choices
+async function loadQuizData(difficulty, category) {
+    try {
+        // Replace this URL with your colleague's actual API endpoint
+        const response = await fetch(`/api/questions?difficulty=${difficulty}&category=${category}`);
+        const questions = await response.json();
+        
+        console.log('Loaded questions for:', difficulty, category, questions);
+        // Display first question here...
+    } catch (error) {
+        console.error('Failed to load quiz questions:', error);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // Sidebar toggle functionality
 const toggleBtn = document.getElementById('sidebarToggle');
 const sidebar = document.querySelector('.image-sidebar');
