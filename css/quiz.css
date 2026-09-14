@@ -11,6 +11,9 @@
 
 /* dark / light themes */
 [data-bs-theme="dark"] {
+    --btn-text-color: #22d3ee;
+    --btn-border-color: rgba(6, 182, 212, 0.5);
+
     body {
         background-color: #121417;
         color: #e0e0e0;
@@ -47,6 +50,9 @@
 } 
 
 [data-bs-theme="light"] {
+    --btn-text-color: #161224;
+    --btn-border-color: rgba(6, 182, 212, .5);
+
     body {
         background-color: #f3f4f6;
         color: #212529;
@@ -117,10 +123,10 @@
 .btn-back-setup {
     top: 1.5rem;
     left: 1.5rem;
-    background-color: #161224;
-    color: #22d3ee; /* cyan-400 */
-    border-color: rgba(6, 182, 212, 0.3) !important;
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+    background-color: transparent;
+    color: var(--btn-text-color);
+    border-color: var(--btn-border-color) !important;
+    box-shadow: 0 0 10px var(--btn-border-color);
     transition: all 0.2s ease;
     cursor: pointer;
 }
