@@ -10,6 +10,7 @@
             "♾"
         ],
         "correctAnswer": 4,
-        "duration": 15
+        "category": "init",
+        "difficulty": "easy"
     }
 ]
