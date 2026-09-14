@@ -33,10 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-   difficultyButtons.forEach(btn => {
+    difficultyButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const difficulty = btn.getAttribute('data-difficulty');
-        localStorage.setItem('quiz_difficulty', difficulty); 
+        /* add local storage to store the chosen difficulty */
+        localStorage.setItem('difficulty', difficulty); 
         stepDifficulty.classList.add('d-none');
         stepCategory.classList.remove('d-none');
     });
@@ -47,12 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         stepDifficulty.classList.remove('d-none');
     });
 
-   categoryButtons.forEach(btn => {
+    categoryButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const chosenCategory = btn.getAttribute('data-cat');
-            /* add local storage to store the chosen category and difficulty */
-            localStorage.setItem('chosenCategory', chosenCategory);
-            localStorage.setItem('chosenDifficulty', chosenDifficulty);
+            /* add local storage to store the chosen category */
+            localStorage.setItem('category', chosenCategory);
             window.location.href = './quiz.html';
         });
     });

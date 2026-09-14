@@ -3,26 +3,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.scrollTo(0, 0);
 
     // get category and difficulty
-    const cat = localStorage.getItem('category') || 'init';
-    const diff = localStorage.getItem('difficulty') || 'easy';
+    const cat = localStorage.getItem('category');
+    const diff = localStorage.getItem('difficulty');
 
     // retrieve question data from init.json
     let data = null;
     async function retrieveData() {
         const response = await fetch('../data/init.json');
         const Data = await response.json();
-        return Data.filter(item => item.category === cat && item.difficulty === diff);
+        return Data.filter(item => (item.category === cat || item.category === 'init') && (item.difficulty === diff || item.difficulty === 'init'));
     };
     data = await retrieveData();
-    // console.log(data);
+    console.log(data);
     
     // get Quiz card element DOM
-    const question = document.querySelector('.Question');
+    const Question = document.querySelector('.Question');
     const options = document.querySelectorAll('.option');
     const sidebarImg = document.querySelector('.Img img');
     
     // set card element content based on retrieved data
-    question.textContent = data[0].question;
+    Question.textContent = data[0].question;
     options.forEach((option, index) => {
         option.textContent = data[0].options[index];
     });
@@ -64,6 +64,7 @@ toggleBtn.addEventListener('click', () => {
 
 // back to setup page functionality
 document.querySelector('#backSetup').addEventListener('click', _ => {
+    localStorage.clear();
     window.location.href = './index.html';
 });
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
