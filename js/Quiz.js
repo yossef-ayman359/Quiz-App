@@ -13,6 +13,7 @@ const totalSeconds  = 15; // retrieve from local storage (localStorage.getItem('
 
 // data from init.json
 let data = null;
+let randomQuestion;
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
 // option button clicked functionality
@@ -23,7 +24,7 @@ options.forEach(option => {
         // ـــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
         const optionValue = option.dataset.value;
-        const correctAnswerIndex = data[0].correctAnswer;
+        const correctAnswerIndex = randomQuestion.correctAnswer;
 
         // check if buttons disabled then return, otherwise disable buttons
         if (option.disable)
@@ -42,6 +43,7 @@ options.forEach(option => {
         
         // Show next Question
         // console.log(new Date().toLocaleTimeString());
+        randomQuestion = getRandomQuestion();
         setTimeout(nextQuestion, 2000);
         // ـــــــــــــــــــــــــــــــــــــــــــــــــــــ
     })
@@ -78,7 +80,7 @@ function getRandomQuestion() {
 
 // set card element content based on Random Question
 function setCardElements() {
-    const randomQuestion = getRandomQuestion();
+    randomQuestion = getRandomQuestion();
 
     if (randomQuestion === null) {
         alert("finish Questions");
@@ -123,7 +125,7 @@ function nextQuestion() {
 
 // retrieve question data from init.json
 async function retrieveData() {
-    const response = await fetch('../data/init.json');
+    const response = await fetch('../data/sports.json');
     const Data     = await response.json();
     return Data.filter(item => (item.category === cat && item.difficulty === diff) || (item.category === 'init' && item.difficulty === 'init') );
 }
