@@ -7,7 +7,7 @@ const sidebarImg    = document.querySelector('.Img img');
 // get category and difficulty
 const cat           = localStorage.getItem('category');
 const diff          = localStorage.getItem('difficulty');
-const numberOfQ     = 20; // retrieve from local storage (localStorage.getItem('#Q'))
+const numberOfQ     = 15; // retrieve from local storage (localStorage.getItem('#Q'))
 const totalSeconds  = 15; // retrieve from local storage (localStorage.getItem('QTime'))
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
@@ -214,6 +214,7 @@ const updateProgressBar = (seconds, stop = false) => {
 }
 
 function startLoopingProgress() {
+    progressBar.style.removeProperty('background-color');
     if (progressInterval) clearInterval(progressInterval);
 
     let progressValue = 0;
