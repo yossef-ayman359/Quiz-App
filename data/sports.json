@@ -170,6 +170,7 @@
     {
         "id": 13,
         "question": "Which Colour of a belt that signifies the highest rank and mastery in traditional martial arts?",
+        "image": "", 
         "options": [
             "White",
             "Blue",
