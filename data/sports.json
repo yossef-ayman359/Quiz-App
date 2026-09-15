@@ -30,7 +30,7 @@
     {
          "id": 3,
         "question": "Which National Team is this?",
-        "image": "WhatsApp Image 2024-06-19 at 11.47.51 PM.jpeg",
+        "image": "./data/egy.jpeg",
         "options": [
             "Yemen",
             "Egypt",
