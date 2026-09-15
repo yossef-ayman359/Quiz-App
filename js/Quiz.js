@@ -1,14 +1,49 @@
+// get category and difficulty
+const cat           = localStorage.getItem('category');
+const diff          = localStorage.getItem('difficulty');
+let correctAnswers = 0;
+let numberOfQ;      // will retrieve from data attribute
+let totalSeconds;   // will retrieve from data attribute
+// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+// get sections
+const durationContainer      = document.querySelector('.Duration-Container');
+const questionCountContainer = document.querySelector('.QuestionCount-Container');
+const quizContainer          = document.querySelector('.Quiz-Container');
+const dashBoardContainer     = document.querySelector('.Dashboard-Container')
+// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+// duration section buttons functionality
+const duration_btns = document.querySelectorAll('.Duration-Container button');
+duration_btns.forEach(btn => {
+    btn.addEventListener('click', _ => {
+        totalSeconds = Number(btn.dataset.duration);
+        durationContainer.classList.toggle('d-none');
+        questionCountContainer.classList.toggle('d-none');
+
+        console.log('seconds = ', totalSeconds);
+    })
+})
+// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+// Number of Questions buttons functionality
+const numQ_btns = document.querySelectorAll('.QuestionCount-Container button');
+numQ_btns.forEach(btn => {
+    btn.addEventListener('click', _ => {
+        numberOfQ = Number(btn.dataset.count);
+        questionCountContainer.classList.toggle('d-none');
+        quizContainer.classList.toggle('d-none');
+        nextQuestion();
+
+        console.log('# Questions = ', numberOfQ);
+    })
+})
+// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
 // get Quiz card element DOM
 const Question      = document.querySelector('.Question');
 const options       = document.querySelectorAll('.option');
 const sidebarImg    = document.querySelector('.Img img');
-// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-// get category and difficulty
-const cat           = localStorage.getItem('category');
-const diff          = localStorage.getItem('difficulty');
-const numberOfQ     = 15; // retrieve from local storage (localStorage.getItem('#Q'))
-const totalSeconds  = 15; // retrieve from local storage (localStorage.getItem('QTime'))
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
 // data from init.json
@@ -35,6 +70,7 @@ options.forEach(option => {
         // Show answer correctness
         if (optionValue == correctAnswerIndex) {
             option.classList.add('btn-success');
+            correctAnswers++;
         } else {
             option.classList.add('btn-danger');
             options[correctAnswerIndex - 1].classList.add('btn-success');
@@ -43,7 +79,7 @@ options.forEach(option => {
         
         // Show next Question
         // console.log(new Date().toLocaleTimeString());
-        randomQuestion = getRandomQuestion();
+        // randomQuestion = getRandomQuestion();
         setTimeout(nextQuestion, 2000);
         // ـــــــــــــــــــــــــــــــــــــــــــــــــــــ
     })
@@ -65,8 +101,9 @@ let qeustionsId = [];
 function getRandomQuestion() {
     const availableQuestions = data.filter(item => !qeustionsId.includes(item.id));
 
-    if (availableQuestions.length === 0) {
-
+    // console.log(qeustionsId);
+    console.log(qeustionsId);
+    if (availableQuestions.length === 0 || qeustionsId.length >= numberOfQ) {
         return null;
     }
 
@@ -83,9 +120,13 @@ function setCardElements() {
     randomQuestion = getRandomQuestion();
 
     if (randomQuestion === null) {
-        alert("finish Questions");
+        // alert("finish Questions");
+        renderDashBoard();
         return null;
     }
+
+    // console.log(randomQuestion.id);
+    
 
     Question.textContent = randomQuestion.question;
     options.forEach((option, index) => {
@@ -165,7 +206,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ـــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
     // Show next Question
-    nextQuestion();
+    if (!quizContainer.classList.contains('d-none'))
+        nextQuestion();
     // ـــــــــــــــــــــــــــــــــــــــــــــــــــــ
 });
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
@@ -209,12 +251,20 @@ const updateProgressBar = (seconds, stop = false) => {
         clearInterval(progressInterval);
         progressBar.style.setProperty('background-color', '#dc3545', 'important');
         progressBar.classList.add('progress-bar-animated');
+
+        // Show correct answer and go to next Question
+        options[randomQuestion.correctAnswer - 1].classList.add('btn-success');
+        // randomQuestion = ();
+        setTimeout(nextQuestion, 2000);
+
         return;
     }
 }
 
 function startLoopingProgress() {
     progressBar.style.removeProperty('background-color');
+    // progressBar.classList.remove('d-none');
+
     if (progressInterval) clearInterval(progressInterval);
 
     let progressValue = 0;
@@ -225,4 +275,27 @@ function startLoopingProgress() {
         updateProgressBar(++progressValue);
     }, 1000);
 }
+// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+// Dash board functionality
+function renderDashBoard() {
+    updateProgressBar(0, true);
+    // progressBar.classList.add('d-none');
+
+    quizContainer.classList.toggle('d-none');
+    dashBoardContainer.classList.toggle('d-none');
+
+    document.getElementById('stat-total-questions').textContent = numberOfQ;
+    document.getElementById('stat-time-per-question').textContent = `${totalSeconds}s`;
+    document.getElementById('stat-correct-answers').textContent = correctAnswers;
+
+    const percentage = Math.round((correctAnswers / numberOfQ) * 100);
+    document.getElementById('stat-percentage').textContent = `${percentage}%`;
+}
+// ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+// restart game functionality
+document.querySelector('#restart-quiz').addEventListener('click', () => {
+    window.location.reload();
+});
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
