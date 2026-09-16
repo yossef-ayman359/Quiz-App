@@ -164,7 +164,7 @@ function nextQuestion() {
 }
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
-// retrieve question data from init.json
+// retrieve question data
 async function retrieveData() {
     console.log('Category name: ', cat);
     
