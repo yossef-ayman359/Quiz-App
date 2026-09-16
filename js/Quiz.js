@@ -166,7 +166,9 @@ function nextQuestion() {
 
 // retrieve question data from init.json
 async function retrieveData() {
-    const response = await fetch('../data/sports.json');
+    console.log('Category name: ', cat);
+    
+    const response = await fetch(`../data/${cat}.json`);
     const Data     = await response.json();
     return Data.filter(item => (item.category === cat && item.difficulty === diff) || (item.category === 'init' && item.difficulty === 'init') );
 }
