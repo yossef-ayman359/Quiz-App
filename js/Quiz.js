@@ -225,7 +225,9 @@ toggleBtn.addEventListener('click', () => {
 
 // back to setup page functionality
 document.querySelector('#backSetup').addEventListener('click', _ => {
+    const theme = localStorage.getItem('theme');
     localStorage.clear();
+    localStorage.setItem('theme', theme);
     window.location.href = './index.html';
 });
 // ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
@@ -253,6 +255,7 @@ const updateProgressBar = (seconds, stop = false) => {
         clearInterval(progressInterval);
         progressBar.style.setProperty('background-color', '#dc3545', 'important');
         progressBar.classList.add('progress-bar-animated');
+        setButtonsDisabled(true);
 
         // Show correct answer and go to next Question
         options[randomQuestion.correctAnswer - 1].classList.add('btn-success');
