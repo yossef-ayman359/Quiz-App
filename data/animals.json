@@ -1,11 +1,11 @@
 [
   {"id":1,"question":"What is the largest living mammal on Earth?","image":"","options":["African Elephant","Blue Whale","Giraffe","Hippopotamus"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
-  {"id":2,"question":"Which bird is famous for being unable to fly and living in Antarctica?","image":"","options":["Ostrich","Penguin","Emu","Kiwi"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
+  {"id":2,"question":"Which dog breed is this?","image":"https://cdn.britannica.com/69/234469-050-B883797B/Rottweiler-dog.jpg","options":["Rottweiler","Doberman","Bauceron","German Shephard"],"correctAnswer":1,"category":"animals","difficulty":"easy"},
   {"id":3,"question":"What is the fastest land animal in the world?","image":"","options":["Lion","Cheetah","Leopard","Gazelle"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":4,"question":"Which animal is known as the 'King of the Jungle'?","image":"","options":["Tiger","Lion","Gorilla","Elephant"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":5,"question":"How many legs does a spider have?","image":"","options":["6","8","10","12"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":6,"question":"What type of animal is a Komodo dragon?","image":"","options":["Mammal","Reptile","Amphibian","Bird"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
-  {"id":7,"question":"Which marsupial is native to Australia and eats eucalyptus leaves?","image":"","options":["Kangaroo","Koala","Wombat","Tasmanian Devil"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
+  {"id":7,"question":"Which reptile is this?","image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCjm20iOV3n9gDLX8CN5pqk7aW4kR1TaMxLl4MW8X5R14wbr0TLYz3O7pc&s=10","options":["Komodo Dragon","Lizard","Chameleon","Geckos"],"correctAnswer":3,"category":"animals","difficulty":"easy"},
   {"id":8,"question":"What is a baby dog called?","image":"","options":["Kitten","Puppy","Cub","Foal"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":9,"question":"Which marine creature has eight arms and three hearts?","image":"","options":["Squid","Octopus","Jellyfish","Seahorse"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":10,"question":"What is the tallest living terrestrial animal?","image":"","options":["Elephant","Giraffe","Camel","Ostrich"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
@@ -15,7 +15,7 @@
   {"id":14,"question":"Which domestic animal is famous for purring and catching mice?","image":"","options":["Dog","Cat","Hamster","Ferret"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":15,"question":"What is the main diet of a Giant Panda in the wild?","image":"","options":["Insects","Bamboo","Fish","Eucalyptus"],"correctAnswer":2,"category":"animals","difficulty":"easy"},
   {"id":16,"question":"What is a group of lions called?","image":"","options":["Pack","Herd","Pride","Flock"],"correctAnswer":3,"category":"animals","difficulty":"medium"},
-  {"id":17,"question":"Which egg-laying mammal is native to eastern Australia and has a duck bill?","image":"","options":["Echidna","Platypus","Opossum","Kangaroo"],"correctAnswer":2,"category":"animals","difficulty":"medium"},
+  {"id":17,"question":"Which kind of animal is this?","image":"https://upload.wikimedia.org/wikipedia/commons/6/64/Avestruz_de_cuello_azul_%28Struthio_camelus_australis%29%2C_cabo_de_Buena_Esparanza%2C_Sud%C3%A1frica%2C_2018-07-23%2C_DD_87.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original","options":["Swan","Duck","Goose","Ostrich"],"correctAnswer":4,"category":"animals","difficulty":"medium"},
   {"id":18,"question":"What color is the skin of a Polar Bear under its white fur?","image":"","options":["Pink","Black","White","Grey"],"correctAnswer":2,"category":"animals","difficulty":"medium"},
   {"id":19,"question":"Which flying mammal uses echolocation to navigate in the dark?","image":"","options":["Owl","Bat","Flying Squirrel","Hummingbird"],"correctAnswer":2,"category":"animals","difficulty":"medium"},
   {"id":20,"question":"What species of shark is the largest fish in the ocean?","image":"","options":["Great White Shark","Whale Shark","Hammerhead Shark","Tiger Shark"],"correctAnswer":2,"category":"animals","difficulty":"medium"},
@@ -40,8 +40,8 @@
   {"id":39,"question":"Which bird possesses the fastest diving speed recorded in the animal kingdom (over 200 mph)?","image":"","options":["Peregrine Falcon","Golden Eagle","Swift","Albatross"],"correctAnswer":1,"category":"animals","difficulty":"hard"},
   {"id":40,"question":"What biological class do sharks, rays, and skates belong to?","image":"","options":["Chondrichthyes","Osteichthyes","Agnatha","Cephalopoda"],"correctAnswer":1,"category":"animals","difficulty":"hard"},
   {"id":41,"question":"How many chambered stomachs does a cow possess for rumination?","image":"","options":["4","3","2","5"],"correctAnswer":1,"category":"animals","difficulty":"hard"},
-  {"id":42,"question":"What is the microscopic organism that lives inside coral polyps supplying energy via photosynthesis?","image":"","options":["Zooxanthellae","Cyanobacteria","Diatoms","Foraminifera"],"correctAnswer":1,"category":"animals","difficulty":"hard"},
+  {"id":42,"question":"What animal is this?","image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnIOy98K83uDYBv_au70SX9j0tN4u11DhIGOAlLSkRS7Z9xAuEiFiMtOPz&s=10","options":["Tiger","Liger","Lion","Tigon"],"correctAnswer":2,"category":"animals","difficulty":"hard"},
   {"id":43,"question":"Which animal species is known to have the longest lifespan among vertebrates (over 300 years)?","image":"","options":["Greenland Shark","Galapagos Tortoise","Bowhead Whale","Ocean Quahog"],"correctAnswer":1,"category":"animals","difficulty":"hard"},
-  {"id":44,"question":"What organ allows fish to detect movements and vibrations in the surrounding water?","image":"","options":["Lateral line system","Ampullae of Lorenzini","Swim bladder","Operculum"],"correctAnswer":1,"category":"animals","difficulty":"hard"},
+  {"id":44,"question":"What kind of fish that has the ability to change its gender?","image":"","options":["Mackerel","Tuna","Barracuda","Clownfish"],"correctAnswer":4,"category":"animals","difficulty":"hard"},
   {"id":45,"question":"What family of animals includes domestic dogs, wolves, foxes, and jackals?","image":"","options":["Canidae","Felidae","Mustelidae","Ursidae"],"correctAnswer":1,"category":"animals","difficulty":"hard"}
 ]
